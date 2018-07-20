@@ -34,10 +34,12 @@ describe('GoogleAPISearch', () => {
             googleAPISearch.getAllRestaurantsNear(DATA_INVALID).should.be.eventually.rejected;
         });
 
-        it('should be resolved, if data is correct', async () => {
-            const result = await googleAPISearch.getAllRestaurantsNear(DATA);
-            result.should.be.an('array');
-            result.should.be.not.empty;
+        it('should be resolved, if data is correct', () => {
+            return googleAPISearch.getAllRestaurantsNear(DATA)
+                .then( result => {
+                    result.should.be.an('array');
+                    result.should.be.not.empty;
+                });
         });
     })
 });
