@@ -8,6 +8,7 @@ const GOOGLE_STATIC_MAP_URI = process.env.GOOGLE_STATIC_MAP_URI;
  */
 exports.getCarouselMessage = (data) => {
     return new Promise( (resolve, reject) => {
+        if (data.length === 0) reject('data must have at least 1 item');
         // each column of the carousel 
         // more info https://developers.line.me/en/reference/messaging-api/#carousel
         let columns = data.map(place => {
